@@ -16,8 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # will this constructor use values from params?
-    @article = Article.new(title: '...', body: '...')
+    @article = Article.new article_params
 
     if @article.save
       redirect_to @article
@@ -25,5 +24,10 @@ class ArticlesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :body)
+  end
 end
-  
