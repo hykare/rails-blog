@@ -3,3 +3,10 @@
 <p><%= @article.body %></p>
 
 <p><%= link_to 'Edit', edit_article_path(@article) %></p>
+<p>
+  <%= link_to 'Delete', article_path(@article), data: {
+    # will make a DELETE request instead of GET
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  }%>
+</p>
