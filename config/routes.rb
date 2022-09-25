@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # # captures part of the path to params hash
   # get 'articles/:id', to: 'articles#show'
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 end
